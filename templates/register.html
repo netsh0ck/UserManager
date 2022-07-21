@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Register</title>
+   <style type="text/css"> 
+#maindiv {
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    width:30em;
+    height:18em;
+    margin-top: -9em; /*set to a negative number 1/2 of your height*/
+    margin-left: -15em; /*set to a negative number 1/2 of your width*/
+    border: 1px solid #ccc;
+    background-color: #009057;
+     text-align: center;
+  border: 3px solid green;
+}
+button {
+  background-color: #006699;
+  border: none;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+
+  font-size: 16px;
+  margin: 4px 2px;
+}
+input{
+height:40px;
+}
+</style>
+</head>
+
+<body style="background-color:powderblue;">
+<div id="maindiv">
+  <form method="POST" onsubmit="return check();">
+    <p><b>Register</b></p>
+    <input type="username"  id= "username" name="username" placeholder="username" required>   
+    <input type="password" name="password" placeholder="Password" id="password" required>
+
+    
+    <button type="button" onclick="check()" name="Submit"><b>Submit</b>  </button>
+</form>
+<p id="alerts"></p></div>
+<script>
+    function check(){
+    
+    var username=document.getElementById("username").value; 
+    var secret=document.getElementById("password").value;
+
+
+    fetch('http://127.0.0.1:5000/register',{method:'POST',headers:{'username':username,'password':secret}}).then(function(results){if(results.status === 400) {
+       document.getElementById("alerts").innerHTML="Username already exists";
+       }if(results.status === 200){document.location.href="/home";};return results.json()}).then(function(data){console.log(data);});
+    
+    }
+    
+    
+  </script>
+</body>
+
+</html>

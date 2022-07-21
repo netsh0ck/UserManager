@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Profile</title>
+  <style>button {
+  background-color: #ff0000;
+  border: none;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+
+  font-size: 16px;
+  margin: 4px 2px;
+}
+#news {
+    width:auto;
+    height:auto;
+    margin-top:100px;
+    border: 1px solid #ccc;
+    background-color: #ffffff;
+     text-align: center;
+  border: 3px solid green;
+
+}
+#top {
+   background-color: #ffffff;
+  border: 3px solid green;
+  text-align: center;
+  
+}
+
+#tele{
+  background-color: red;
+  border: none;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  
+}
+</style>
+</head>
+
+<body style="background-color:powderblue;">
+<marquee  direction="left" height="20px" scrollamount="7">
+---------------USER  MANAGEMENT  SYSTEM---------------
+</marquee>
+<div id="top">
+
+ <h1>WELCOME {{username}}</h1>
+ <button type="button" onclick="check()" name="logout"><b>Logout</b>  </button>
+<br><br>
+<a id="tele" target="_blank" href="https://telegram.me/codebond">SUBSCRIBE FOR PAGERNET NEWSLETTER</a>
+
+</div>
+<div id="news">
+{% for i in range(ll-1,-1,-1) %}
+  <a target="_blank" href={{link[i]}}>{{tag[i]}}</a>
+  <br>
+  <br>
+{% endfor %}
+</div>
+
+<script>
+ function check(){
+    document.location.href="/logout";
+    }
+ 
+    
+    
+  </script>
+</body>
+
+</html>
